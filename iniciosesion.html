@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro HuertoHogar</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <!--Barra de navegación -->
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #2E8B57; color:white; ">
+        <div class="container-fluid">
+            <img src="img/iconmain.png" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active nav-text" href="index.html" style="color: white;">Tienda Huerto Hogar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-text" href="productos.html" style="color: rgb(216, 213, 213);">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-text" href="#" style="color: rgb(216, 213, 213);">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-text" href="#" style="color: rgb(216, 213, 213);">Blogs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-text" href="#" style="color: rgb(216, 213, 213);">Contactos</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto" id="nav-links">
+                <li class="nav-item" id="login-link">
+                    <a class="nav-link nav-text" href="iniciosesion.html" style="color:rgb(216, 213, 213);">Iniciar sesion</a>
+                </li>
+                <li class="nav-item" id="register-link">
+                    <a class="nav-link nav-text" href="registro.html" style="color:rgb(216, 213, 213);">Registrar usuario</a>
+                </li>
+                <li class="nav-item dropdown" id="profile-menu" style="display: none;">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Mi cuenta</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Perfil</a></li>
+                        <li><a class="dropdown-menu" href="#">Configuracion</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" id="logout-btn">Cerrar sesion</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-text" href="#" style="color:rgb(216, 213, 213);">
+                        <i class="bi bi-cart"></i> Carrito
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6 shadow rounded p-4">
+                <form id="log-form" class="was-validated" >
+                    <div class="mb-3">
+                        <h1>Inicio de sesion para clientes</h1>
+                    </div>
+                    <div class="col">
+                        
+                        <div class="mb-3">
+                            <label for="user" class="form-label">Nombre de Usuario</label>
+                            <input type="text" required name="user" id="user2" class="form-control" />
+                        
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Complete este campo</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="pass" class="form-label">Password</label>
+                            <input type="password" required name="pass" id="pass2" class="form-control" />
+                        
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Ingrese password</div>
+                        </div>
+                    </div>
+
+
+                    <div class="text-center">
+                        <input type="submit" value="Iniciar Sesion" class="btn btn-md btn-success">
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+    <script src="js/form_scripts.js"></script>
+</body>
+
+</html>

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/navbar.css">
     <script src="js/bootstrap.bundle.min.js"></script>
+    
 </head>
 <body>
     <!--Barra de navegación -->
@@ -31,12 +32,21 @@
                     <a class="nav-link nav-text" href="#" style="color: rgb(216, 213, 213);">Contactos</a>
                 </li>
             </ul>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link nav-text" href="#" style="color:rgb(216, 213, 213);">Iniciar sesion</a>
+            <ul class="navbar-nav ms-auto" id="nav-links">
+                <li class="nav-item" id="login-link">
+                    <a class="nav-link nav-text" href="iniciosesion.html" style="color:rgb(216, 213, 213);">Iniciar sesion</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-text" href="#" style="color:rgb(216, 213, 213);">Registrar usuario</a>
+                <li class="nav-item" id="register-link">
+                    <a class="nav-link nav-text" href="registro.html" style="color:rgb(216, 213, 213);">Registrar usuario</a>
+                </li>
+                <li class="nav-item dropdown" id="profile-menu" style="display: none;">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Mi cuenta</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Perfil</a></li>
+                        <li><a class="dropdown-menu" href="#">Configuracion</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" id="logout-btn">Cerrar sesion</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-text" href="#" style="color:rgb(216, 213, 213);">
@@ -115,7 +125,8 @@
             </div>
         </div>
     </div>
-    <footer class="py-4" style="background-color: #2E8B57; color: white;">
+    <!--Footer -->
+    <footer class="p-4" style="background-color: #2E8B57; color: white;">
         <div class="container">
             <div class="row">
                 <!-- Sección 1: Nombre y slogan -->
@@ -164,5 +175,6 @@
             </div>
         </div>
     </footer>
+    <script src="js/form_scripts.js"></script>
 </body>
 </html>
