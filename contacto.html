@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosotros</title>
+    <title>Contacto</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/navbar.css">
@@ -33,17 +33,22 @@
             </ul>
             <ul class="navbar-nav ms-auto" id="nav-links">
                 <li class="nav-item" id="login-link">
-                    <a class="nav-link nav-text" href="iniciosesion.html" style="color:rgb(216, 213, 213);">Iniciar sesion</a>
+                    <a class="nav-link nav-text" href="iniciosesion.html" style="color:rgb(216, 213, 213);">Iniciar
+                        sesion</a>
                 </li>
                 <li class="nav-item" id="register-link">
-                    <a class="nav-link nav-text" href="registro.html" style="color:rgb(216, 213, 213);">Registrar usuario</a>
+                    <a class="nav-link nav-text" href="registro.html" style="color:rgb(216, 213, 213);">Registrar
+                        usuario</a>
                 </li>
                 <li class="nav-item dropdown" id="profile-menu" style="display: none;">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Mi cuenta</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown">Mi cuenta</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Perfil</a></li>
                         <li><a class="dropdown-menu" href="#">Configuracion</a></li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li><a class="dropdown-item" href="#" id="logout-btn">Cerrar sesion</a></li>
                     </ul>
                 </li>
@@ -55,47 +60,46 @@
             </ul>
         </div>
     </nav>
-    <!-- Sección Nosotros -->
-    <div class="container-fluid p-4 mb-5" style="background-color: #2E8B57; color: white;">
-        <h1 class="text-center">Nosotros</h1>
-    </div>
-    
-        <!-- Misión -->
-        <div class="row align-items-center mb-5">
-            <div class="col-md-5">
-                <h3 style="color: #2E8B57;">Misión</h3>
-                <p>
-                    Nuestra misión es proporcionar productos frescos y de calidad directamente desde el campo hasta
-                    la puerta de nuestros clientes, garantizando la frescura y el sabor en cada entrega. Nos
-                    comprometemos a fomentar una conexión más cercana entre los consumidores y los agricultores
-                    locales, apoyando prácticas agrícolas sostenibles y promoviendo una alimentación saludable en
-                    todos los hogares chilenos.
-                </p>
-            </div>
+    <!-- Página de Contacto -->
+    <div class="container my-5">
+        <!-- Título y logo arriba -->
+        <div class="text-center mb-4">
+            <h2 class="fw-bold" style="color:#2E8B57;">Huerto Hogar</h2>
+            <img src="img/iconmain.png" alt="Logo Huerto Hogar" style="width:80px;" class="rounded-pill">
         </div>
     
-        <!-- Visión -->
-        <div class="row align-items-center mb-5 flex-md-row-reverse">
-            <div class="col-md-6">
-                <h3 style="color: #2E8B57;">Visión</h3>
-                <p>
-                    Nuestra visión es ser la tienda online líder en la distribución de productos frescos y naturales en
-                    Chile, reconocida por nuestra calidad excepcional, servicio al cliente y compromiso con la
-                    sostenibilidad. Aspiramos a expandir nuestra presencia a nivel nacional e internacional,
-                    estableciendo un nuevo estándar en la distribución de productos agrícolas directos del productor al
-                    consumidor.
-                </p>
-            </div>
-        </div>
-    </div>
+        <!-- Contenedor del formulario -->
+        <div class="d-flex justify-content-center">
+            <div class="card shadow-lg p-4" style="max-width: 500px; width:100%; border-radius:15px;">
+                <h4 class="text-center mb-4" style="color:#2E8B57;">Contáctanos</h4>
     
-    <!-- Banner final -->
-    <div class="container-fluid p-0 position-relative">
-        <img src="img/bannernosotros.jpg" alt="Huerto Hogar - Nosotros" class="img-fluid w-100">
-        <!-- Texto encima del banner -->
-        <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
-            <h2 class="fw-bold">Conectando el campo con tu mesa</h2>
-            <p>Frescura, calidad y sostenibilidad en cada entrega</p>
+                <form id="contact-form">
+                    <!-- Campo Nombre Completo -->
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre Completo</label>
+                        <input type="text" class="form-control" id="nombre" placeholder="Escribe tu nombre completo">
+                    </div>
+    
+                    <!-- Campo Correo -->
+                    <div class="mb-3">
+                        <label for="correo" class="form-label">Correo</label>
+                        <input type="email" class="form-control" id="correo" placeholder="ejemplo@correo.com">
+                    </div>
+    
+                    <!-- Campo Contenido -->
+                    <div class="mb-3">
+                        <label for="contenido" class="form-label">Contenido</label>
+                        <textarea class="form-control" id="contenido" rows="4"
+                            placeholder="Escribe tu mensaje aquí"></textarea>
+                    </div>
+    
+                    <!-- Botón -->
+                    <div class="d-grid">
+                        <button type="submit" id="btnEnviar" class="btn"
+                            style="background-color:#2E8B57; color:white;">Enviar Mensaje</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
     <!--Footer -->
@@ -149,6 +153,7 @@
             </div>
         </div>
     </footer>
+    <script src="js/form_scripts.js"></script>
     <script src="js/form_scripts.js"></script>
 </body>
 </html>

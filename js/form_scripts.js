@@ -150,3 +150,23 @@ const loginForm = document.getElementById("log-form");
 if (loginForm) {
     loginForm.addEventListener("submit", logearUsuario);
 }
+
+// Validación del formulario de contacto
+const contactoForm = document.getElementById("contact-form");
+const correoInput = document.getElementById("correo");
+const btnEnviar = document.getElementById("btnEnviar");
+
+contactoForm.addEventListener("submit", function(e) {
+    const correo = correoInput.value.trim();
+
+    // Validación simple: debe contener @
+    if (!correo.includes("@")) {
+        e.preventDefault(); // Evita que el formulario se "envíe"
+        alert("Correo inválido 😅");
+        return;
+    }
+
+    // Si pasa la validación, muestra mensaje enviado
+    e.preventDefault(); // Evita recargar la página para el ejemplo
+    alert("Mensaje enviado ✅");
+});
