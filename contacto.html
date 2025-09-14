@@ -33,27 +33,22 @@
             </ul>
             <ul class="navbar-nav ms-auto" id="nav-links">
                 <li class="nav-item" id="login-link">
-                    <a class="nav-link nav-text" href="iniciosesion.html" style="color:rgb(216, 213, 213);">Iniciar
-                        sesion</a>
+                    <a class="nav-link nav-text" href="iniciosesion.html" style="color:rgb(216, 213, 213);">Iniciar sesion</a>
                 </li>
                 <li class="nav-item" id="register-link">
-                    <a class="nav-link nav-text" href="registro.html" style="color:rgb(216, 213, 213);">Registrar
-                        usuario</a>
+                    <a class="nav-link nav-text" href="registro.html" style="color:rgb(216, 213, 213);">Registrar usuario</a>
                 </li>
                 <li class="nav-item dropdown" id="profile-menu" style="display: none;">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown">Mi cuenta</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Mi cuenta</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Perfil</a></li>
                         <li><a class="dropdown-menu" href="#">Configuracion</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
+                        <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#" id="logout-btn">Cerrar sesion</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-text" href="#" style="color:rgb(216, 213, 213);">
+                    <a class="nav-link nav-text" href="#" data-bs-toggle="modal" data-bs-target="#carritoModal">
                         <i class="bi bi-cart"></i> Carrito
                     </a>
                 </li>
@@ -153,7 +148,26 @@
             </div>
         </div>
     </footer>
+    <!-- Carrito -->
+    <div class="modal fade" id="carritoModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tu carrito</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="carrito-lista" class="list-group mb-3"></ul>
+                    <h5>Total: <span id="carrito-total">$0</span></h5>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn" style="background-color: #2E8B57; color: white;"  data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="js/form_scripts.js"></script>
-    <script src="js/form_scripts.js"></script>
+    <script src="js/carrito.js"></script>
+    <script>renderCarrito();</script>
 </body>
 </html>

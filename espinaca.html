@@ -51,14 +51,13 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-text" href="#" style="color:rgb(216, 213, 213);">
+                    <a class="nav-link nav-text" href="#" data-bs-toggle="modal" data-bs-target="#carritoModal">
                         <i class="bi bi-cart"></i> Carrito
                     </a>
                 </li>
             </ul>
         </div>
     </nav>
-
     <!-- Breadcrumb -->
     <div class="container my-3">
         <small>
@@ -95,7 +94,11 @@
                 <hr>
                 <label for="cantidad" class="form-label">Cantidad:</label>
                 <input type="number" id="cantidad" value="1" min="1" class="form-control mb-3" style="max-width:100px;">
-                <button class="btn" style="background-color:#2E8B57; color:white;">Añadir al carrito</button>
+                <button class="btn btn-success mt-3"
+                    onclick="addToCarrito('verdura2', parseInt(document.getElementById('cantidad').value))" data-bs-toggle="modal"
+                    data-bs-target="#carritoModal">
+                    Añadir al carrito
+                </button>
                 <hr>
             </div>
         </div>
@@ -179,7 +182,27 @@
             </div>
         </div>
     </footer>
+    <!-- Carrito -->
+    <div class="modal fade" id="carritoModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tu carrito</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="carrito-lista" class="list-group mb-3"></ul>
+                    <h5>Total: <span id="carrito-total">$0</span></h5>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn" style="background-color: #2E8B57; color: white;"  data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="js/form_scripts.js"></script>
     <script src="js/detalleproducto.js"></script>
+    <script src="js/carrito.js"></script>
+    <script>renderCarrito();</script>
 </body>
 </html>
