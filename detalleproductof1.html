@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Huerto Hogar</title>
+    <title>Detalle de Producto - Huerto Hogar</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/navbar.css">
     <script src="js/bootstrap.bundle.min.js"></script>
-    
+    <link rel="stylesheet" href="css/detalleproductos.css">
 </head>
+
 <body>
-    <!--Barra de navegación -->
+<!--Barra de navegación -->
     <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #2E8B57; color:white; ">
         <div class="container-fluid">
             <img src="img/iconmain.png" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
@@ -56,76 +58,77 @@
             </ul>
         </div>
     </nav>
-    <!--Imagen y descripcion para embellecer-->
-    <div class="container-fluid my-3">
-        <div class="p-5" style="background-color: #2E8B57; color: white;">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>Desde nuestro Huerto Hogar para tí</h2>
-                    <p>HuertoHogar es una tienda online dedicada a llevar la frescura y calidad de los productos del campo
-                        directamente a la puerta de nuestros clientes en Chile. Con más de 6 años de experiencia, operamos
-                        en más de 9 puntos a lo largo del país, incluyendo ciudades clave como Santiago, Puerto Montt,
-                        Villarica, Nacimiento, Viña del Mar, Valparaíso, y Concepción. Nuestra misión es conectar a las
-                        familias chilenas con el campo, promoviendo un estilo de vida saludable y sostenible</p>
+
+    <!-- Breadcrumb -->
+    <div class="container my-3">
+        <small>
+            <a href="index.html" style="color:#2E8B57;">Inicio</a> &gt;
+            <a href="productos.html?category=fruit" style="color:#2E8B57;">Frutas frescas</a> &gt;
+            <span>Manzanas Fuji</span>
+        </small>
+    </div>
+
+    <!-- Producto Detalle -->
+    <div class="container my-4">
+        <div class="row">
+            <!-- Card de imagenes -->
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <img id="main-image" src="img/manzanafuji1.jpg" class="img-fluid mb-2" alt="Manzanas Fuji">
+                    <div class="d-flex gap-2">
+                        <img src="img/manzanafuji1.jpg" class="thumbnail-img active" onclick="changeImage(this)">
+                        <img src="img/manzanafuji2.jpg" class="thumbnail-img" onclick="changeImage(this)">
+                        <img src="img/manzanafuji3.jpg" class="thumbnail-img" onclick="changeImage(this)">
+                        <img src="img/manzanafuji4.webp" class="thumbnail-img" onclick="changeImage(this)">
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <img src="img/banner1.jpeg" class="img-fluid" alt="Huerto Hogar">
-                </div>
+            </div>
+
+            <!-- Detalle del producto -->
+            <div class="col-md-6">
+                <h2>Manzanas Fuji</h2>
+                <h5>Precio: $1.200 por KG</h5>
+                <hr>
+                <p>Manzanas Fuji crujientes y dulces, cultivadas en el Valle del Maule.
+                    Perfectas para meriendas saludables o como ingrediente en postres. Estas manzanas
+                    son conocidas por su textura firme y su sabor equilibrado entre dulce y ácido.</p>
+                <hr>
+                <label for="cantidad" class="form-label">Cantidad:</label>
+                <input type="number" id="cantidad" value="1" min="1" class="form-control mb-3" style="max-width:100px;">
+                <button class="btn" style="background-color:#2E8B57; color:white;">Añadir al carrito</button>
+                <hr>
             </div>
         </div>
     </div>
-    <!--Banner separador -->
-    <div class="container-fluid my-5">
-        <div class="p-3" style="background-color: #2E8B57; color: white;">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>Productos más comprados!</h2>
+
+    <!-- Productos relacionados -->
+    <div class="container my-4">
+        <hr>
+        <h4>Productos relacionados</h4>
+        <div class="row g-3 mt-2">
+            <div class="col-md-2 col-4">
+                <img src="img/naranja1_1.webp" class="related-product-img"
+                    onclick="window.location.href='naranjas.html'">
+            </div>
+            <div class="col-md-2 col-4">
+                <img src="img/banana1.jpg" class="related-product-img"
+                    onclick="window.location.href='platanos.html'">
+            </div>
+            <div class="col-md-2 col-4">
+                <img src="img/zanahoria1.webp" class="related-product-img"
+                    onclick="window.location.href='zanahoria.html'">
+            </div>
+            <div class="col-md-2 col-4">
+                <img src="img/espinaca1.jpg" class="related-product-img"
+                    onclick="window.location.href='espinaca.html'">
+            </div>
+            <div class="col-md-2 col-4">
+                <img src="img/miel1.jpg" class="related-product-img"
+                    onclick="window.location.href='miel.html'">
             </div>
         </div>
     </div>
-    <!--Cartas de productos-->
-    <div class="row p-3">
-        <!--Producto 1-->
-        <div class="col-md-4">
-            <div class="card m-1 rounded h-100" style="width: 500px;;">
-                <img class="card-img-top" src="img/manzanafuji1.jpg" alt="Card image" style="width:100%;">
-                <div class="card-body d-flex flex-column">
-                    <h4 class="card-title main-text">Manzanas Fuji</h4>
-                    <p class="card-text main-text"> Manzanas Fuji crujientes y dulces, cultivadas en el Valle del Maule.
-                        Perfectas para meriendas saludables o como ingrediente en postres. Estas manzanas
-                        son conocidas por su textura firme y su sabor equilibrado entre dulce y ácido.</p>
-                    <a href="detalleproductof1.html" class="btn mt-auto main-text" style="background-color: #2E8B57; color:white;">Comprar: $1.200 por KG</a>
-                </div>
-            </div>
-        </div>
-        <!--Producto 2 -->
-        <div class="col-md-4">
-            <div class="card m-1 rounded h-100" style="width: 500px;;">
-                <img class="card-img-top" src="img/naranja1_1.webp" alt="Card image" style="width:100%;">
-                <div class="card-body d-flex flex-column">
-                    <h4 class="card-title main-text">Naranjas Valencianas</h4>
-                    <p class="card-text main-text">Jugosas y ricas en vitamina C, estas naranjas Valencia son ideales para
-                        zumos frescos y refrescantes. Cultivadas en condiciones climáticas óptimas que
-                        aseguran su dulzura y jugosidad.</p>
-                    <a href="naranjas.html" class="btn mt-auto main-text" style="background-color: #2E8B57; color:white;">Comprar: $1.000 por KG</a>
-                </div>
-            </div>
-        </div>
-        <!--Producto 3 -->
-        <div class="col-md-4">
-            <div class="card m-1 rounded h-100" style="width: 500px;;">
-                <img class="card-img-top" src="img/banana1.jpg" alt="Card image" style="width:100%;">
-                <div class="card-body d-flex flex-column">
-                    <h4 class="card-title main-text">Plátanos Cavendish</h4>
-                    <p class="card-text main-text"> Plátanos maduros y dulces, perfectos para el desayuno o como snack
-                        energético. Estos plátanos son ricos en potasio y vitaminas, ideales para mantener una
-                        dieta equilibrada.</p>
-                    <a href="platanos.html" class="btn mt-auto main-text" style="background-color: #2E8B57; color:white;">Comprar: $800 por KG</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Footer -->
+<!--Footer -->
     <footer class="p-4" style="background-color: #2E8B57; color: white;">
         <div class="container">
             <div class="row">
@@ -177,5 +180,6 @@
         </div>
     </footer>
     <script src="js/form_scripts.js"></script>
+    <script src="js/detalleproducto.js"></script>
 </body>
 </html>
