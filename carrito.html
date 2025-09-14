@@ -4,16 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle de Producto - Huerto Hogar</title>
+    <title>Mi carrito de compras</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/navbar.css">
     <script src="js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="css/detalleproductos.css">
 </head>
 
 <body>
-<!--Barra de navegación -->
+    <!--Barra de navegación -->
     <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #2E8B57; color:white; ">
         <div class="container-fluid">
             <img src="img/iconmain.png" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
@@ -58,80 +57,30 @@
             </ul>
         </div>
     </nav>
-    <!-- Breadcrumb -->
-    <div class="container my-3">
-        <small>
-            <a href="index.html" style="color:#2E8B57;">Inicio</a> &gt;
-            <a href="productos.html?category=fruit" style="color:#2E8B57;">Frutas frescas</a> &gt;
-            <span>Naranjas Valencianas</span>
-        </small>
-    </div>
-
-    <!-- Producto Detalle -->
-    <div class="container my-4">
+    <div class="container my-5">
+        <h2 class="mb-4 fw-bold" style="color:#2E8B57;">Mi carrito de compras</h2>
         <div class="row">
-            <!-- Card de imagenes -->
-            <div class="col-md-6">
-                <div class="card p-3">
-                    <img id="main-image" src="img/naranja1_1.webp" class="img-fluid mb-2" alt="Manzanas Fuji">
-                    <div class="d-flex gap-2">
-                        <img src="img/naranja1_1.webp" class="thumbnail-img active" onclick="changeImage(this)">
-                        <img src="img/naranja2.jpg" class="thumbnail-img" onclick="changeImage(this)">
-                        <img src="img/naranja3.jpeg" class="thumbnail-img" onclick="changeImage(this)">
-                        <img src="img/naranja4.jpg" class="thumbnail-img" onclick="changeImage(this)">
-                    </div>
+
+            <!-- Columna izquierda: productos -->
+            <div class="col-md-8" id="carrito-productos">
+                <!-- Los productos se renderizan aquí con JS -->
+            </div>
+
+            <!-- Columna derecha: resumen -->
+            <div class="col-md-4">
+                <div class="border p-4 rounded shadow-sm">
+                    <h4>Total: <span id="carrito-total">$0</span></h4>
+                    <hr>
+                    <label for="codigo" class="form-label">Código de descuento</label>
+                    <input type="text" id="codigo" class="form-control mb-3" placeholder="Ingresa tu código">
+                    <button id="btn-comprar" class="btn w-100" style="background-color:#2E8B57; color:white;">
+                        Comprar
+                    </button>
                 </div>
             </div>
-
-            <!-- Detalle del producto -->
-            <div class="col-md-6">
-                <h2>Naranjas Valencianas</h2>
-                <h5>Precio: $1.000 por KG</h5>
-                <hr>
-                <p>Jugosas y ricas en vitamina C, estas naranjas Valencia son ideales para
-                    zumos frescos y refrescantes. Cultivadas en condiciones climáticas óptimas que
-                    aseguran su dulzura y jugosidad.</p>
-                <hr>
-                <label for="cantidad" class="form-label">Cantidad:</label>
-                <input type="number" id="cantidad" value="1" min="1" class="form-control mb-3" style="max-width:100px;">
-                <button class="btn btn-success mt-3"
-                    onclick="addToCarrito('fruit2', parseInt(document.getElementById('cantidad').value))" data-bs-toggle="modal"
-                    data-bs-target="#carritoModal">
-                    Añadir al carrito
-                </button>
-                <hr>
-            </div>
         </div>
     </div>
-
-    <!-- Productos relacionados -->
-    <div class="container my-4">
-        <hr>
-        <h4>Productos relacionados</h4>
-        <div class="row g-3 mt-2">
-            <div class="col-md-2 col-4">
-                <img src="img/fruit1.jpg" class="related-product-img"
-                    onclick="window.location.href='detalleproductof1.html'">
-            </div>
-            <div class="col-md-2 col-4">
-                <img src="img/banana1.jpg" class="related-product-img"
-                    onclick="window.location.href='platanos.html'">
-            </div>
-            <div class="col-md-2 col-4">
-                <img src="img/zanahoria1.webp" class="related-product-img"
-                    onclick="window.location.href='zanahoria.html'">
-            </div>
-            <div class="col-md-2 col-4">
-                <img src="img/espinaca1.jpg" class="related-product-img"
-                    onclick="window.location.href='espinaca.html'">
-            </div>
-            <div class="col-md-2 col-4">
-                <img src="img/miel1.jpg" class="related-product-img"
-                    onclick="window.location.href='miel.html'">
-            </div>
-        </div>
-    </div>
-<!--Footer -->
+    <!--Footer -->
     <footer class="p-4" style="background-color: #2E8B57; color: white;">
         <div class="container">
             <div class="row">
@@ -202,8 +151,8 @@
         </div>
     </div>
     <script src="js/form_scripts.js"></script>
-    <script src="js/detalleproducto.js"></script>
     <script src="js/carrito.js"></script>
     <script>renderCarrito();</script>
 </body>
+
 </html>
