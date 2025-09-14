@@ -1,16 +1,20 @@
+// ===================== VALIDACIONES =====================
+
+// Validar password coincidente
 function validarPassword() {
     let psw = document.getElementById("pass").value;
     let rpw = document.getElementById("repass").value;
 
-    if (psw == rpw) {
-        console.log("Ta weno");
+    if (psw === rpw) {
+        document.getElementById("passcheck").textContent = "";
+        return true;
     } else {
-        console.log("Ta malo");
-        document.getElementById("passcheck").innerHTML = "Los password no coinciden"
+        document.getElementById("passcheck").textContent = "Las contraseñas no coinciden";
+        return false;
     }
-
 }
 
+// Validar y formatear RUT
 function validarYFormatearRUT() {
     const input = document.getElementById("rut");
     let rut = input.value.replace(/[^0-9kK]/g, '').toUpperCase();
@@ -25,11 +29,10 @@ function validarYFormatearRUT() {
 
     // Formatear el cuerpo con puntos
     cuerpo = cuerpo.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
     const rutFormateado = `${cuerpo}-${dv}`;
     input.value = rutFormateado;
 
-    // Validar
+    // Validar RUT
     if (!validarRUN(cuerpo.replace(/\./g, ""), dv)) {
         marcarInvalido(input, "RUT inválido");
     } else {
@@ -70,6 +73,8 @@ function marcarInvalido(input, mensaje = "") {
     }
 }
 
+// ===================== NAVBAR =====================
+
 // Verificamos si el usuario ya está logueado en localStorage
 let loggedIn = localStorage.getItem("loggedIn");
 
@@ -105,68 +110,89 @@ if (logoutBtn) {
 // Inicializar navbar
 updateNavbar();
 
-function registrarUsuario(e) {
-    e.preventDefault(); // evita recargar la página
+// ===================== REGISTRO =====================
 
-    const user = document.getElementById("user").value;
-    const pass = document.getElementById("pass").value;
-    const repass = document.getElementById("repass").value;
+// Función para validar correos específicos
+function validarCorreo(inputElement) {
+    const valor = inputElement.value.trim();
+    const regex = /^[a-zA-Z0-9._%+-]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
 
-    if (pass !== repass) {
-        alert("Las contraseñas no coinciden 😅");
-        return;
+    if (regex.test(valor)) {
+        inputElement.classList.remove("is-invalid");
+        inputElement.classList.add("is-valid");
+        return true;
+    } else {
+        inputElement.classList.remove("is-valid");
+        inputElement.classList.add("is-invalid");
+        return false;
     }
-
-    // Simulación de "crear cuenta"
-    localStorage.setItem("loggedIn", "true");
-    localStorage.setItem("username", user);
-
-    alert("Registro exitoso  Bienvenido, " + user);
-
-    // Redirigir al index
-    window.location.href = "index.html";
 }
 
-// Aquí enlazas el form con la función
+// Registro
+const formRegistro = document.getElementById("register-form");
+if (formRegistro) {
+    formRegistro.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const user = document.getElementById("user").value;
+        const correoInput = document.getElementById("correo");
+        const pass = document.getElementById("pass");
+        const repass = document.getElementById("repass");
+
+        const correoValido = validarCorreo(correoInput);
+        const passValido = validarPassword();
+
+        if (correoValido && passValido) {
+            alert("Usuario registrado, Bienvenido " + user);
+            localStorage.setItem("loggedIn", "true");
+            localStorage.setItem("username", user);
+            window.location.href = "index.html";
+        }
+    });
+
+    // Validar correo al perder el foco
+    const correoInput = document.getElementById("correo");
+    correoInput.addEventListener("blur", () => validarCorreo(correoInput));
+}
+
+// ===================== LOGIN =====================
 
 function logearUsuario(e) {
     e.preventDefault();
-
     const user = document.getElementById("user2").value;
     localStorage.setItem("loggedIn", "true");
     localStorage.setItem("username", user);
-    alert("Inicio de sesion exitoso Bienvenido, " + user);
+    alert("Inicio de sesión exitoso, Bienvenido " + user);
     window.location.href = "index.html";
 }
 
-// REGISTRO
-const registerForm = document.getElementById("register-form");
-if (registerForm) {
-    registerForm.addEventListener("submit", registrarUsuario);
-}
-
-// LOGIN
 const loginForm = document.getElementById("log-form");
 if (loginForm) {
     loginForm.addEventListener("submit", logearUsuario);
 }
 
-// Validación del formulario de contacto
-const contactoForm = document.getElementById("contact-form");
-const correoInput = document.getElementById("correo");
-const btnEnviar = document.getElementById("btnEnviar");
+// LOGIN CON VALIDACION DE CORREO
+function logearUsuario(e) {
+    e.preventDefault();
 
-contactoForm.addEventListener("submit", function(e) {
-    const correo = correoInput.value.trim();
+    const correoInput = document.getElementById("correo-login");
+    const passInput = document.getElementById("pass2"); // opcional, solo visual
+    const correoValido = validarCorreo(correoInput);
 
-    // Validación simple: debe contener @
-    if (!correo.includes("@")) {
-        e.preventDefault(); // Evita que el formulario se "envíe"
+    if (!correoValido) {
         alert("Correo inválido 😅");
         return;
     }
 
-    // Si pasa la validación, muestra mensaje enviado
-    e.preventDefault(); // Evita recargar la página para el ejemplo
-    alert("Mensaje enviado ✅");
-});
+    // Simulación de login exitoso
+    localStorage.setItem("loggedIn", "true");
+    localStorage.setItem("username", correoInput.value);
+    alert("Inicio de sesión exitoso, Bienvenido " + correoInput.value);
+    window.location.href = "index.html";
+}
+
+// Captura del formulario de login
+const loginForm2 = document.getElementById("log-form");
+if (loginForm) {
+    loginForm.addEventListener("submit", logearUsuario);
+}

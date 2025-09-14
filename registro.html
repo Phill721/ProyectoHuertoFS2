@@ -12,8 +12,8 @@
 </head>
 
 <body>
-    <!--Barra de navegación -->
-    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #2E8B57; color:white; ">
+    <!--Barra de navegación-->
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #2E8B57; color:white;">
         <div class="container-fluid">
             <img src="img/iconmain.png" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
             <ul class="navbar-nav">
@@ -35,17 +35,22 @@
             </ul>
             <ul class="navbar-nav ms-auto" id="nav-links">
                 <li class="nav-item" id="login-link">
-                    <a class="nav-link nav-text" href="iniciosesion.html" style="color:rgb(216, 213, 213);">Iniciar sesion</a>
+                    <a class="nav-link nav-text" href="iniciosesion.html" style="color:rgb(216, 213, 213);">Iniciar
+                        sesion</a>
                 </li>
                 <li class="nav-item" id="register-link">
-                    <a class="nav-link nav-text" href="registro.html" style="color:rgb(216, 213, 213);">Registrar usuario</a>
+                    <a class="nav-link nav-text" href="registro.html" style="color:rgb(216, 213, 213);">Registrar
+                        usuario</a>
                 </li>
                 <li class="nav-item dropdown" id="profile-menu" style="display: none;">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Mi cuenta</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown">Mi cuenta</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Perfil</a></li>
                         <li><a class="dropdown-menu" href="#">Configuracion</a></li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li><a class="dropdown-item" href="#" id="logout-btn">Cerrar sesion</a></li>
                     </ul>
                 </li>
@@ -57,55 +62,66 @@
             </ul>
         </div>
     </nav>
+
     <div class="container">
         <div class="row mt-5">
             <div class="col-sm-3"></div>
             <div class="col-sm-6 shadow rounded p-4">
-                <form id="register-form" class="was-validated" >
+                <form id="register-form" class="was-validated">
                     <div class="mb-3">
                         <h1>Registro de Clientes</h1>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label for="rut" class="form-label">Rut</label>
-                            <input type="text" required name="rut" id="rut" class="form-control" onchange="validarYFormatearRUT()" />
-                        
+                            <input type="text" required name="rut" id="rut" class="form-control"
+                                onchange="validarYFormatearRUT()" />
                             <div class="valid-feedback"></div>
                             <div class="invalid-feedback">Ingrese rut</div>
                         </div>
+
                         <div class="mb-3">
                             <label for="user" class="form-label">Nombre de Usuario</label>
                             <input type="text" required name="user" id="user" class="form-control" />
-                        
                             <div class="valid-feedback"></div>
                             <div class="invalid-feedback">Complete este campo</div>
                         </div>
 
                         <div class="mb-3">
+                            <label for="correo" class="form-label">Correo</label>
+                            <input type="text" required name="correo" id="correo" class="form-control"
+                                onblur="validarCorreo(this)" />
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">
+                                Complete este campo o ingrese un correo válido (@duoc.cl, @profesor.duoc.cl, @gmail.com)
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
                             <label for="pass" class="form-label">Password</label>
                             <input type="password" required name="pass" id="pass" class="form-control" />
-                        
                             <div class="valid-feedback"></div>
-                            <div class="invalid-feedback">Ingrese password</div>
+                            <div class="invalid-feedback">Ingrese contraseña</div>
                         </div>
+
                         <div class="mb-3">
-                            <label for="repass" class="form-label">Reingrese Password</label>
-                            <input type="password" required name="repass" id="repass" class="form-control" onblur="validarPassword()" />
-                        
+                            <label for="repass" class="form-label">Reingrese contraseña</label>
+                            <input type="password" required name="repass" id="repass" class="form-control"
+                                onblur="validarPassword()" />
                             <div class="valid-feedback"></div>
                             <div class="text-danger" id="passcheck"></div>
                         </div>
                     </div>
 
-
                     <div class="text-center">
-                        <input  type="submit" value="Registrar" class="btn btn-md btn-success">
+                        <input type="submit" value="Registrar" class="btn btn-md btn-success">
                     </div>
                 </form>
             </div>
             <div class="col-sm-3"></div>
         </div>
     </div>
+
     <!-- Carrito -->
     <div class="modal fade" id="carritoModal" tabindex="-1">
         <div class="modal-dialog">
@@ -119,12 +135,15 @@
                     <h5>Total: <span id="carrito-total">$0</span></h5>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn" style="background-color: #2E8B57; color: white;"  data-bs-dismiss="modal">Cerrar</button>
-                    <a href="carrito.html" class="btn" style="background-color: #2E8B57; color: white;">Ir al carrito</a>
+                    <button class="btn btn" style="background-color: #2E8B57; color: white;"
+                        data-bs-dismiss="modal">Cerrar</button>
+                    <a href="carrito.html" class="btn" style="background-color: #2E8B57; color: white;">Ir al
+                        carrito</a>
                 </div>
             </div>
         </div>
     </div>
+
     <script src="js/form_scripts.js"></script>
     <script src="js/carrito.js"></script>
     <script>renderCarrito();</script>
