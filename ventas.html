@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Ventas - HuertoHogar</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-main: #F7F7F7;
+            --accent-green: #2E8B57;
+            --accent-yellow: #FFD700;
+            --accent-brown: #8B4513;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --font-main: 'Montserrat', sans-serif;
+            --font-heading: 'Playfair Display', serif;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .contenedor {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .encabezado {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+
+        .contenedor-admin {
+            display: flex;
+            min-height: 500px;
+        }
+
+        .barra-lateral {
+            width: 250px;
+            background-color: var(--accent-brown);
+            color: white;
+            padding: 20px;
+        }
+
+        .menu-admin {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .menu-admin li {
+            margin-bottom: 10px;
+        }
+
+        .menu-admin a {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            border-radius: 4px;
+        }
+
+        .menu-admin a:hover, .menu-admin a.activo {
+            background-color: var(--accent-green);
+        }
+
+        .contenido-admin {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .filtros {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .grupo-filtro {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resumen-ventas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .tarjeta-resumen {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .tarjeta-resumen .valor {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+
+        .tarjeta-resumen .label {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .badge-estado {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge-completada {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .badge-pendiente {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .badge-cancelada {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .contenedor-admin {
+                flex-direction: column;
+            }
+            
+            .barra-lateral {
+                width: 100%;
+            }
+            
+            .filtros {
+                flex-direction: column;
+            }
+            
+            .resumen-ventas {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <header class="encabezado">
+            <div class="logo">
+                <i class="fas fa-leaf"></i> HuertoHogar-Admin
+            </div>
+            <div>
+                <a href="admin.html" class="btn btn-secondary me-2">Inicio</a>
+                <a href="index.html" class="btn btn-danger">Volver a la Tienda</a>
+            </div>
+        </header>
+
+        <div class="contenedor-admin">
+            <div class="barra-lateral">
+                <h2>Panel de Control</h2>
+                <ul class="menu-admin">
+                    <li><a href="admin.html" class="menu-admin-enlace">Inicio</a></li>
+                    <li><a href="productos-admin.html" class="menu-admin-enlace">Productos</a></li>
+                    <li><a href="usuarios.html" class="menu-admin-enlace">Usuarios</a></li>
+                    <li><a href="ventas.html" class="menu-admin-enlace activo">Ventas</a></li>
+                </ul>
+            </div>
+
+            <div class="contenido-admin">
+                <h2>Gestión de Ventas</h2>
+                
+                <div class="resumen-ventas">
+                    <div class="tarjeta-resumen">
+                        <div class="valor">$128,400</div>
+                        <div class="label">VENTAS TOTALES</div>
+                    </div>
+                    <div class="tarjeta-resumen">
+                        <div class="valor">12</div>
+                        <div class="label">VENTAS DEL DÍA</div>
+                    </div>
+                    <div class="tarjeta-resumen">
+                        <div class="valor">$8,500</div>
+                        <div class="label">VALOR PROMEDIO BOLETA</div>
+                    </div>
+                    <div class="tarjeta-resumen">
+                        <div class="valor">15</div>
+                        <div class="label">PEDIDOS PENDIENTES</div>
+                    </div>
+                </div>
+                
+                <div class="filtros">
+                    <div class="grupo-filtro">
+                        <label class="form-label">Fecha:</label>
+                        <select class="form-select">
+                            <option value="">Todas las fechas</option>
+                            <option value="hoy">Hoy</option>
+                            <option value="semana">Esta semana</option>
+                            <option value="mes">Este mes</option>
+                            <option value="personalizado">Personalizado</option>
+                        </select>
+                    </div>
+                    
+                    <div class="grupo-filtro">
+                        <label class="form-label">Estado:</label>
+                        <select class="form-select">
+                            <option value="">Todos los estados</option>
+                            <option value="completada">Completado</option>
+                            <option value="pendiente">Pendiente</option>
+                            <option value="cancelada">Cancelado</option>
+                        </select>
+                    </div>
+                    
+                    <div class="grupo-filtro">
+                        <label class="form-label">Ordenar por:</label>
+                        <select id="ordenar-ventas" class="form-select">
+                            <option value="reciente">Más recientes primero</option>
+                            <option value="antiguo">Más antiguas primero</option>
+                            <option value="cantidad">Cantidad</option>
+                            <option value="total">Costo</option>
+                        </select>
+                    </div>
+                    
+                    <div class="grupo-filtro">
+                        <label class="form-label">&nbsp;</label>
+                        <button class="btn btn-success">
+                            <i class="fas fa-download"></i> Exportar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID Venta</th>
+                                <th>Cliente</th>
+                                <th>Fecha</th>
+                                <th>Productos</th>
+                                <th>Cantidad</th>
+                                <th>Total</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lista-ventas">
+                            <tr>
+                                <td>V-001</td>
+                                <td>Juan Pérez</td>
+                                <td>15/05/2023</td>
+                                <td>Manzanas Fuji, Zanahorias Orgánicas</td>
+                                <td>5</td>
+                                <td>$8,500</td>
+                                <td><span class="badge-estado badge-completada">Completada</span></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-info btn-sm">Detalles</button>
+                                        <button class="btn btn-primary btn-sm">Editar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>V-002</td>
+                                <td>María González</td>
+                                <td>14/05/2023</td>
+                                <td>Miel Orgánica, Queso de Cabra</td>
+                                <td>3</td>
+                                <td>$12,800</td>
+                                <td><span class="badge-estado badge-completada">Completada</span></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-info btn-sm">Detalles</button>
+                                        <button class="btn btn-primary btn-sm">Editar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>V-003</td>
+                                <td>Carlos López</td>
+                                <td>13/05/2023</td>
+                                <td>Naranjas Valencia, Plátanos Cavendish</td>
+                                <td>7</td>
+                                <td>$9,600</td>
+                                <td><span class="badge-estado badge-pendiente">Pendiente</span></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-info btn-sm">Detalles</button>
+                                        <button class="btn btn-primary btn-sm">Editar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>V-004</td>
+                                <td>Ana Rodríguez</td>
+                                <td>12/05/2023</td>
+                                <td>Lechuga Hidropónica, Tomates Cherry</td>
+                                <td>4</td>
+                                <td>$7,200</td>
+                                <td><span class="badge-estado badge-completada">Completada</span></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-info btn-sm">Detalles</button>
+                                        <button class="btn btn-primary btn-sm">Editar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>V-005</td>
+                                <td>Roberto Sánchez</td>
+                                <td>11/05/2023</td>
+                                <td>Huevos Orgánicos, Mantequilla</td>
+                                <td>2</td>
+                                <td>$5,300</td>
+                                <td><span class="badge-estado badge-cancelada">Cancelada</span></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-info btn-sm">Detalles</button>
+                                        <button class="btn btn-primary btn-sm">Editar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Siguiente</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Datos de ejemplo para ventas
+        const ventas = [
+            { id: 'V-001', cliente: 'Juan Pérez', fecha: '15/05/2023', productos: 'Manzanas Fuji, Zanahorias Orgánicas', cantidad: 5, total: 8500, estado: 'completada' },
+            { id: 'V-002', cliente: 'María González', fecha: '14/05/2023', productos: 'Miel Orgánica, Queso de Cabra', cantidad: 3, total: 12800, estado: 'completada' },
+            { id: 'V-003', cliente: 'Carlos López', fecha: '13/05/2023', productos: 'Naranjas Valencia, Plátanos Cavendish', cantidad: 7, total: 9600, estado: 'pendiente' },
+            { id: 'V-004', cliente: 'Ana Rodríguez', fecha: '12/05/2023', productos: 'Lechuga Hidropónica, Tomates Cherry', cantidad: 4, total: 7200, estado: 'completada' },
+            { id: 'V-005', cliente: 'Roberto Sánchez', fecha: '11/05/2023', productos: 'Huevos Orgánicos, Mantequilla', cantidad: 2, total: 5300, estado: 'cancelada' }
+        ];
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filtrado de ventas
+            document.getElementById('ordenar-ventas').addEventListener('change', ordenarVentas);
+        });
+
+        // Ordenar ventas
+        function ordenarVentas() {
+            const ordenarPor = document.getElementById('ordenar-ventas').value;
+            const listaVentas = document.getElementById('lista-ventas');
+            const filas = Array.from(listaVentas.querySelectorAll('tr'));
+            
+            filas.sort((a, b) => {
+                const celdasA = a.querySelectorAll('td');
+                const celdasB = b.querySelectorAll('td');
+                
+                switch(ordenarPor) {
+                    case 'reciente':
+                        return new Date(celdasB[2].textContent) - new Date(celdasA[2].textContent);
+                    case 'antiguo':
+                        return new Date(celdasA[2].textContent) - new Date(celdasB[2].textContent);
+                    case 'cantidad':
+                        return parseInt(celdasB[4].textContent) - parseInt(celdasA[4].textContent);
+                    case 'total':
+                        return parseFloat(celdasB[5].textContent.replace('$', '').replace(',', '')) - 
+                               parseFloat(celdasA[5].textContent.replace('$', '').replace(',', ''));
+                    default:
+                        return 0;
+                }
+            });
+            
+            // Limpiar
+            listaVentas.innerHTML = '';
+            filas.forEach(fila => listaVentas.appendChild(fila));
+        }
+    </script>
+</body>
+</html>

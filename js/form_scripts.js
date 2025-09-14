@@ -146,7 +146,11 @@ if (formRegistro) {
             alert("Usuario registrado, Bienvenido " + user);
             localStorage.setItem("loggedIn", "true");
             localStorage.setItem("username", user);
-            window.location.href = "index.html";
+            if (correoInput.value.endsWith("@profesor.duoc.cl")) {
+                window.location.href = "admin.html";
+            } else {
+                window.location.href = "index.html";
+            }
         }
     });
 
@@ -163,7 +167,11 @@ function logearUsuario(e) {
     localStorage.setItem("loggedIn", "true");
     localStorage.setItem("username", user);
     alert("Inicio de sesión exitoso, Bienvenido " + user);
-    window.location.href = "index.html";
+    if (correoInput.value.endsWith("@profesor.duoc.cl")) {
+        window.location.href = "admin.html";
+    } else {
+        window.location.href = "index.html";
+    }
 }
 
 const loginForm = document.getElementById("log-form");
@@ -188,7 +196,11 @@ function logearUsuario(e) {
     localStorage.setItem("loggedIn", "true");
     localStorage.setItem("username", correoInput.value);
     alert("Inicio de sesión exitoso, Bienvenido " + correoInput.value);
-    window.location.href = "index.html";
+    if (correoInput.value.endsWith("@profesor.duoc.cl")) {
+        window.location.href = "admin.html";
+    } else {
+        window.location.href = "index.html";
+    }
 }
 
 // Captura del formulario de login

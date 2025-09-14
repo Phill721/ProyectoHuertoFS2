@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios - HuertoHogar</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-main: #F7F7F7;
+            --accent-green: #2E8B57;
+            --accent-yellow: #FFD700;
+            --accent-brown: #8B4513;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --font-main: 'Montserrat', sans-serif;
+            --font-heading: 'Playfair Display', serif;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .contenedor {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .encabezado {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+
+        .contenedor-admin {
+            display: flex;
+            min-height: 500px;
+        }
+
+        .barra-lateral {
+            width: 250px;
+            background-color: var(--accent-brown);
+            color: white;
+            padding: 20px;
+        }
+
+        .menu-admin {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .menu-admin li {
+            margin-bottom: 10px;
+        }
+
+        .menu-admin a {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            border-radius: 4px;
+        }
+
+        .menu-admin a:hover, .menu-admin a.activo {
+            background-color: var(--accent-green);
+        }
+
+        .contenido-admin {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .acciones-superiores {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contenedor-formulario {
+            background-color: var(--bg-main);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .contenedor-formulario.mostrar {
+            display: block;
+        }
+
+        .mensaje-error {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .campo-opcional {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .campo-edicion {
+            display: none;
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .contenedor-admin {
+                flex-direction: column;
+            }
+            
+            .barra-lateral {
+                width: 100%;
+            }
+            
+            .acciones-superiores {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <header class="encabezado">
+            <div class="logo">
+                <i class="fas fa-leaf"></i> HuertoHogar-Admin
+            </div>
+            <div>
+                <a href="admin.html" class="btn btn-secondary me-2">Inicio</a>
+                <a href="index.html" class="btn btn-danger">Volver a la Tienda</a>
+            </div>
+        </header>
+
+        <div class="contenedor-admin">
+            <div class="barra-lateral">
+                <h2>Panel de Control</h2>
+                <ul class="menu-admin">
+                    <li><a href="admin.html" class="menu-admin-enlace">Inicio</a></li>
+                    <li><a href="productos-admin.html" class="menu-admin-enlace">Productos</a></li>
+                    <li><a href="usuarios.html" class="menu-admin-enlace activo">Usuarios</a></li>
+                    <li><a href="ventas.html" class="menu-admin-enlace">Ventas</a></li>
+                </ul>
+            </div>
+
+            <div class="contenido-admin">
+                <div class="acciones-superiores">
+                    <h2>Gestión de Usuarios</h2>
+                    <button class="btn btn-success" id="boton-agregar-usuario">
+                        <i class="fas fa-plus"></i> Agregar Usuario
+                    </button>
+                </div>
+                
+                <div class="contenedor-formulario" id="formulario-usuario-container">
+                    <h3 id="titulo-formulario-usuario">Agregar Nuevo Usuario</h3>
+                    <form id="formulario-usuario">
+                        <input type="hidden" id="id-usuario" value="">
+                        <input type="hidden" id="es-edicion" value="false">
+                        
+                        <div class="mb-3">
+                            <label for="nombre-usuario" class="form-label">Nombre Completo *</label>
+                            <input type="text" id="nombre-usuario" class="form-control" placeholder="Nombre y apellido">
+                            <div class="mensaje-error" id="error-nombre-usuario">Solo se permiten letras y espacios</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email-usuario" class="form-label">Correo Electrónico *</label>
+                            <input type="email" id="email-usuario" class="form-control" placeholder="usuario@ejemplo.com">
+                            <div class="mensaje-error" id="error-email-usuario">Formato de correo inválido</div>
+                        </div>
+                        
+                        <!-- Campos de contraseña para nuevo usuario -->
+                        <div id="campos-contrasena-nuevo">
+                            <div class="mb-3">
+                                <label for="contrasena-usuario" class="form-label">Contraseña *</label>
+                                <input type="password" id="contrasena-usuario" class="form-control" placeholder="Contraseña">
+                                <div class="mensaje-error" id="error-contrasena-usuario">Porfavor ingrese contraseña</div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="confirmar-contrasena-usuario" class="form-label">Confirmar Contraseña *</label>
+                                <input type="password" id="confirmar-contrasena-usuario" class="form-control" placeholder="Confirmar contraseña">
+                                <div class="mensaje-error" id="error-confirmar-contrasena-usuario">Las contraseñas no coinciden</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Campo de contraseña para edición (opcional) -->
+                        <div id="campos-contrasena-edicion" class="campo-edicion">
+                            <div class="mb-3">
+                                <label for="nueva-contrasena" class="form-label">Nueva Contraseña <span class="campo-opcional">(opcional)</span></label>
+                                <input type="password" id="nueva-contrasena" class="form-control" placeholder="Dejar en blanco para mantener la actual">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="confirmar-nueva-contrasena" class="form-label">Confirmar Nueva Contraseña</label>
+                                <input type="password" id="confirmar-nueva-contrasena" class="form-control" placeholder="Confirmar nueva contraseña">
+                                <div class="mensaje-error" id="error-confirmar-nueva-contrasena">Las contraseñas no coinciden</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="telefono-usuario" class="form-label">Teléfono <span class="campo-opcional">(opcional)</span></label>
+                            <input type="tel" id="telefono-usuario" class="form-control" placeholder="+56 9 1234 5678">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="region-usuario" class="form-label">Región *</label>
+                            <select id="region-usuario" class="form-select">
+                                <option value="">Selecciona una región</option>
+                                <option value="metropolitana">Región Metropolitana</option>
+                                <option value="valparaiso">Región de Valparaíso</option>
+                                <option value="bio-bio">Región del Biobío</option>
+                            </select>
+                            <div class="mensaje-error" id="error-region-usuario">Selecciona una región</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="comuna-usuario" class="form-label">Comuna *</label>
+                            <select id="comuna-usuario" class="form-select" disabled>
+                                <option value="">Porfavor selecciona una región</option>
+                            </select>
+                            <div class="mensaje-error" id="error-comuna-usuario">Selecciona una comuna</div>
+                        </div>
+                        
+                        <div>
+                            <button type="submit" class="btn btn-success" id="boton-enviar-usuario">Guardar Usuario</button>
+                            <button type="button" class="btn btn-danger" id="boton-cancelar-usuario">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <h3>Lista de Usuarios</h3>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Teléfono</th>
+                                <th>Región</th>
+                                <th>Comuna</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lista-usuarios">
+                            <!-- Los usuarios se cargarán aquí dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Scripts externos -->
+    <script src="js/data-usuarios.js"></script>
+    <script src="js/validacion-usuarios.js"></script>
+    <script src="js/funciones-usuarios.js"></script>
+    <script src="js/main-usuarios.js"></script>
+</body>
+</html>
