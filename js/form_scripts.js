@@ -151,6 +151,9 @@ if (formRegistro) {
             } else {
                 window.location.href = "index.html";
             }
+        } else if (!correoValido){
+            alert("Correo inválido 😅");
+            return;
         }
     });
 
