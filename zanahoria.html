@@ -94,8 +94,7 @@
                 <hr>
                 <label for="cantidad" class="form-label">Cantidad:</label>
                 <input type="number" id="cantidad" value="1" min="1" class="form-control mb-3" style="max-width:100px;">
-                <button class="btn btn-success mt-3"
-                    onclick="addToCarrito('verdura1', parseInt(document.getElementById('cantidad').value))" data-bs-toggle="modal"
+                <button class="btn btn-success mt-3" onclick="validarCantidadYAgregar('verdura1')" data-bs-toggle="modal"
                     data-bs-target="#carritoModal">
                     Añadir al carrito
                 </button>

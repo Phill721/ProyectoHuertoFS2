@@ -37,6 +37,17 @@ function addToCarrito(id, cantidad) {
     renderCarritoPage();
 }
 
+function validarCantidadYAgregar(id) {
+    let cantidad = parseInt(document.getElementById("cantidad").value);
+
+    if (isNaN(cantidad) || cantidad < 1) {
+        alert("La cantidad debe ser al menos 1 😅");
+        return;
+    }
+
+    addToCarrito(id, cantidad);
+}
+
 // Cambiar cantidad (+ o -)
 function changeCantidad(id, delta) {
     let carrito = getCarrito();
