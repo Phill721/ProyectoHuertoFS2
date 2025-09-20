@@ -66,61 +66,80 @@
             </div>
         </div>
     </nav>
-    <!--Banner de blogs -->
-    <div class="container-fluid my-3">
-        <div class="p-5" style="background-color: #2E8B57; color: white;">
-            <div class="row">
-                <div class="col-md-4">
-                    <h2>Alimentación saludable</h2>
-                    <p>Descubre cómo incorporar más frutas y verduras en tu dieta diaria, disfrutando de todo su sabor,
-                    frescura y beneficios para tu salud. Con pequeños cambios en tus comidas podrás añadir color, energía y vitalidad a tu día,
-                    logrando una alimentación más equilibrada, natural y deliciosa.</p>
-                </div>
-                <div class="col-md-6 ms-auto">
-                    <img src="img/blog1.jpg" class="img-fluid" alt="Huerto Hogar">
-                </div>
-                <div class="mt-3">
-                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1" class="btn btn-outline-light w-50">Ver más</a>
+    <!-- Sección Blogs -->
+    <div class="container my-4">
+        <div class="row g-4">
+    
+            <!-- Blog 1 -->
+            <div class="col-12 col-lg-4">
+                <div class="card h-100 shadow-sm bg-success text-white">
+                    <img src="img/blog1.jpg" class="card-img-top" alt="Alimentación saludable">
+                    <div class="card-body">
+                        <h5 class="card-title">Alimentación saludable</h5>
+                        <p class="card-text small">
+                            Descubre cómo incorporar más frutas y verduras en tu dieta diaria, disfrutando de todo su sabor
+                            y beneficios para tu salud.
+                        </p>
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1"
+                            class="btn btn-outline-light btn-sm w-100">Ver más</a>
+                    </div>
                 </div>
             </div>
+    
+            <!-- Blog 2 -->
+            <div class="col-12 col-lg-4">
+                <div class="card h-100 shadow-sm bg-success text-white">
+                    <img src="img/blog2.webp" class="card-img-top" alt="Sostenibilidad">
+                    <div class="card-body">
+                        <h5 class="card-title">Sostenibilidad</h5>
+                        <p class="card-text small">
+                            Adopta un estilo de vida más sostenible con pequeñas acciones que generan un gran impacto en el
+                            planeta.
+                        </p>
+                        <a href="https://images7.memedroid.com/images/UPLOADED293/614398d290f70.jpeg"
+                            class="btn btn-outline-light btn-sm w-100">Ver más</a>
+                    </div>
+                </div>
             </div>
+    
+            <!-- Blog 3 -->
+            <div class="col-12 col-lg-4">
+                <div class="card h-100 shadow-sm bg-success text-white">
+                    <img src="img/blog3.jpg" class="card-img-top" alt="Recetas">
+                    <div class="card-body">
+                        <h5 class="card-title">Recetas</h5>
+                        <p class="card-text small">
+                            Explora recetas saludables y transforma ingredientes frescos en platos llenos de sabor y
+                            nutrición.
+                        </p>
+                        <a href="https://www.youtube.com/watch?v=A51XH7C8Xv0" class="btn btn-outline-light btn-sm w-100">Ver
+                            más</a>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
     </div>
-    <div class="container-fluid my-5">
-        <div class="p-5" style="background-color: #2E8B57; color: white;">
-            <div class="row">
-                <div class="col-md-4">
-                    <h2>Sostenibilidad</h2>
-                    <p>Adopta un estilo de vida más sostenible con pequeñas acciones que generan un gran impacto en el planeta.
-                    Al elegir productos locales, reducir el uso de plásticos y aprovechar los recursos de forma consciente,
-                    puedes contribuir a un futuro más verde y responsable. Cada decisión cuenta, y con tu compromiso diario
-                    no solo cuidas el medioambiente, sino que también promueves bienestar, equilibrio y armonía con la naturaleza.</p>
-                </div>
-                <div class="col-md-6 ms-auto">
-                    <img src="img/blog2.webp" class="img-fluid" alt="Huerto Hogar">
-                </div>
-                <div class="mt-3">
-                    <a href="https://images7.memedroid.com/images/UPLOADED293/614398d290f70.jpeg" class="btn btn-outline-light w-50">Ver más</a>
-                </div>
+
+    <!-- Formulario para crear post -->
+    <div class="container my-4">
+        <h2 class="text-center mb-3">Crea tu post</h2>
+        <form id="postForm" class="card p-3 shadow-sm">
+            <div class="mb-3">
+                <label class="form-label">Título</label>
+                <input type="text" id="titulo" class="form-control" required>
             </div>
+            <div class="mb-3">
+                <label class="form-label">Contenido</label>
+                <textarea id="contenido" class="form-control" rows="3" required></textarea>
             </div>
+            <button type="submit" class="btn w-100" style="background-color:#2E8B57;color:white;">Publicar</button>
+        </form>
     </div>
-    <div class="container-fluid my-5">
-        <div class="p-5" style="background-color: #2E8B57; color: white;">
-            <div class="row">
-                <div class="col-md-4">
-                    <h2>Recetas</h2>
-                    <p>Explora el mundo de las recetas saludables y descubre cómo transformar ingredientes frescos en platos llenos de sabor y nutrición.
-                    Con preparaciones simples y creativas podrás disfrutar de comidas equilibradas que cuidan tu cuerpo sin renunciar al gusto.
-                    Cada receta es una oportunidad para experimentar, compartir en familia y mantener un estilo de vida más consciente, delicioso y lleno de energía.</p>
-                </div>
-                <div class="col-md-6 ms-auto">
-                    <img src="img/blog3.jpg" class="img-fluid" alt="Huerto Hogar">
-                </div>
-                <div class="mt-3">
-                    <a href="https://www.youtube.com/watch?v=A51XH7C8Xv0" class="btn btn-outline-light w-50">Ver más</a>
-                </div>
-            </div>
-            </div>
+    <!-- Sección de posts -->
+    <div class="container my-4">
+        <h3 class="text-center">Últimos Posts</h3>
+        <div id="postsContainer" class="row g-3 mt-3"></div>
     </div>
     <!--Footer -->
     <footer class="p-2 p-md-4" style="background-color: #2E8B57; color: white;">
@@ -206,6 +225,7 @@
     </div>
     <script src="js/form_scripts.js"></script>
     <script src="js/carrito.js"></script>
+    <script src="js/blogs.js"></script>
     <script>renderCarrito();</script>
 </body>
 </html>
