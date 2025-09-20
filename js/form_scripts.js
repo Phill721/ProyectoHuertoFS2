@@ -128,6 +128,28 @@ function validarCorreo(inputElement) {
     }
 }
 
+function guardarTipoUsuario(correo) {
+    if (correo.endsWith("@profesor.duoc.cl")) {
+        localStorage.setItem("tipoUsuario", "admin");
+    } else {
+        localStorage.setItem("tipoUsuario", "cliente");
+    }
+}
+
+function actualizarPerfilLink() {
+    const perfilLink = document.getElementById("perfil-link");
+    const tipo = localStorage.getItem("tipoUsuario");
+
+    if (!perfilLink || !tipo) return;
+
+    if (tipo === "admin") {
+        perfilLink.href = "admin.html";
+    } else {
+        perfilLink.href = "perfil.html"; // cliente
+    }
+}
+
+
 // Registro
 const formRegistro = document.getElementById("register-form");
 if (formRegistro) {
@@ -146,6 +168,7 @@ if (formRegistro) {
             alert("Usuario registrado, Bienvenido " + user);
             localStorage.setItem("loggedIn", "true");
             localStorage.setItem("username", user);
+            guardarTipoUsuario(correoInput.value);
             if (correoInput.value.endsWith("@profesor.duoc.cl")) {
                 window.location.href = "admin.html";
             } else {
@@ -170,6 +193,7 @@ function logearUsuario(e) {
     localStorage.setItem("loggedIn", "true");
     localStorage.setItem("username", user);
     alert("Inicio de sesión exitoso, Bienvenido " + user);
+    actualizarPerfilLink();
     if (correoInput.value.endsWith("@profesor.duoc.cl")) {
         window.location.href = "admin.html";
     } else {
@@ -211,3 +235,4 @@ const loginForm2 = document.getElementById("log-form");
 if (loginForm) {
     loginForm.addEventListener("submit", logearUsuario);
 }
+document.addEventListener("DOMContentLoaded", actualizarPerfilLink);
