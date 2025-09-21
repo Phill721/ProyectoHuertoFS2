@@ -169,6 +169,37 @@
             color: #721c24;
         }
 
+        /* Modal para detalles de venta */
+        .modal-detalles {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-contenido {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .cerrar-modal {
+            float: right;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
         /* Responsividad */
         @media (max-width: 768px) {
             .contenedor-admin {
@@ -193,7 +224,7 @@
     <div class="contenedor">
         <header class="encabezado">
             <div class="logo">
-                <i class="fas fa-leaf"></i> HuertoHogar-Admin
+                <i class="fas fa-leaf"></i> HuertoHogar Admin
             </div>
             <div>
                 <a href="admin.html" class="btn btn-secondary me-2">Inicio</a>
@@ -221,12 +252,12 @@
                         <div class="label">VENTAS TOTALES</div>
                     </div>
                     <div class="tarjeta-resumen">
-                        <div class="valor">12</div>
-                        <div class="label">VENTAS DEL DÍA</div>
+                        <div class="valor">42</div>
+                        <div class="label">VENTAS HOY</div>
                     </div>
                     <div class="tarjeta-resumen">
                         <div class="valor">$8,500</div>
-                        <div class="label">VALOR PROMEDIO BOLETA</div>
+                        <div class="label">TICKET PROMEDIO</div>
                     </div>
                     <div class="tarjeta-resumen">
                         <div class="valor">15</div>
@@ -250,9 +281,9 @@
                         <label class="form-label">Estado:</label>
                         <select class="form-select">
                             <option value="">Todos los estados</option>
-                            <option value="completada">Completado</option>
+                            <option value="completada">Completada</option>
                             <option value="pendiente">Pendiente</option>
-                            <option value="cancelada">Cancelado</option>
+                            <option value="cancelada">Cancelada</option>
                         </select>
                     </div>
                     
@@ -261,16 +292,13 @@
                         <select id="ordenar-ventas" class="form-select">
                             <option value="reciente">Más recientes primero</option>
                             <option value="antiguo">Más antiguas primero</option>
-                            <option value="cantidad">Cantidad</option>
-                            <option value="total">Costo</option>
+                            <option value="cantidad">Cantidad de productos</option>
+                            <option value="total">Costo total</option>
                         </select>
                     </div>
                     
                     <div class="grupo-filtro">
                         <label class="form-label">&nbsp;</label>
-                        <button class="btn btn-success">
-                            <i class="fas fa-download"></i> Exportar
-                        </button>
                     </div>
                 </div>
 
@@ -284,86 +312,12 @@
                                 <th>Productos</th>
                                 <th>Cantidad</th>
                                 <th>Total</th>
-                                <th>Estado</th>
+                                <th>Estado</th> 
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody id="lista-ventas">
-                            <tr>
-                                <td>V-001</td>
-                                <td>Juan Pérez</td>
-                                <td>15/05/2023</td>
-                                <td>Manzanas Fuji, Zanahorias Orgánicas</td>
-                                <td>5</td>
-                                <td>$8,500</td>
-                                <td><span class="badge-estado badge-completada">Completada</span></td>
-                                <td>
-                                    <div class="btn-group">
-                                        <button class="btn btn-info btn-sm">Detalles</button>
-                                        <button class="btn btn-primary btn-sm">Editar</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>V-002</td>
-                                <td>María González</td>
-                                <td>14/05/2023</td>
-                                <td>Miel Orgánica, Queso de Cabra</td>
-                                <td>3</td>
-                                <td>$12,800</td>
-                                <td><span class="badge-estado badge-completada">Completada</span></td>
-                                <td>
-                                    <div class="btn-group">
-                                        <button class="btn btn-info btn-sm">Detalles</button>
-                                        <button class="btn btn-primary btn-sm">Editar</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>V-003</td>
-                                <td>Carlos López</td>
-                                <td>13/05/2023</td>
-                                <td>Naranjas Valencia, Plátanos Cavendish</td>
-                                <td>7</td>
-                                <td>$9,600</td>
-                                <td><span class="badge-estado badge-pendiente">Pendiente</span></td>
-                                <td>
-                                    <div class="btn-group">
-                                        <button class="btn btn-info btn-sm">Detalles</button>
-                                        <button class="btn btn-primary btn-sm">Editar</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>V-004</td>
-                                <td>Ana Rodríguez</td>
-                                <td>12/05/2023</td>
-                                <td>Lechuga Hidropónica, Tomates Cherry</td>
-                                <td>4</td>
-                                <td>$7,200</td>
-                                <td><span class="badge-estado badge-completada">Completada</span></td>
-                                <td>
-                                    <div class="btn-group">
-                                        <button class="btn btn-info btn-sm">Detalles</button>
-                                        <button class="btn btn-primary btn-sm">Editar</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>V-005</td>
-                                <td>Roberto Sánchez</td>
-                                <td>11/05/2023</td>
-                                <td>Huevos Orgánicos, Mantequilla</td>
-                                <td>2</td>
-                                <td>$5,300</td>
-                                <td><span class="badge-estado badge-cancelada">Cancelada</span></td>
-                                <td>
-                                    <div class="btn-group">
-                                        <button class="btn btn-info btn-sm">Detalles</button>
-                                        <button class="btn btn-primary btn-sm">Editar</button>
-                                    </div>
-                                </td>
-                            </tr>
+                            <!-- Las ventas se cargarán aquí dinámicamente -->
                         </tbody>
                     </table>
                 </div>
@@ -385,54 +339,21 @@
         </div>
     </div>
 
+    <!-- Modal para detalles de venta -->
+    <div id="modal-detalles" class="modal-detalles">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" id="cerrar-modal">&times;</span>
+            <h3 id="titulo-detalles">Detalles de Venta</h3>
+            <div id="contenido-detalles">
+                <!-- Los detalles se cargarán aquí dinámicamente -->
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <script>
-        // Datos de ejemplo para ventas
-        const ventas = [
-            { id: 'V-001', cliente: 'Juan Pérez', fecha: '15/05/2023', productos: 'Manzanas Fuji, Zanahorias Orgánicas', cantidad: 5, total: 8500, estado: 'completada' },
-            { id: 'V-002', cliente: 'María González', fecha: '14/05/2023', productos: 'Miel Orgánica, Queso de Cabra', cantidad: 3, total: 12800, estado: 'completada' },
-            { id: 'V-003', cliente: 'Carlos López', fecha: '13/05/2023', productos: 'Naranjas Valencia, Plátanos Cavendish', cantidad: 7, total: 9600, estado: 'pendiente' },
-            { id: 'V-004', cliente: 'Ana Rodríguez', fecha: '12/05/2023', productos: 'Lechuga Hidropónica, Tomates Cherry', cantidad: 4, total: 7200, estado: 'completada' },
-            { id: 'V-005', cliente: 'Roberto Sánchez', fecha: '11/05/2023', productos: 'Huevos Orgánicos, Mantequilla', cantidad: 2, total: 5300, estado: 'cancelada' }
-        ];
-
-        // Inicialización
-        document.addEventListener('DOMContentLoaded', function() {
-            // Filtrado de ventas
-            document.getElementById('ordenar-ventas').addEventListener('change', ordenarVentas);
-        });
-
-        // Ordenar ventas
-        function ordenarVentas() {
-            const ordenarPor = document.getElementById('ordenar-ventas').value;
-            const listaVentas = document.getElementById('lista-ventas');
-            const filas = Array.from(listaVentas.querySelectorAll('tr'));
-            
-            filas.sort((a, b) => {
-                const celdasA = a.querySelectorAll('td');
-                const celdasB = b.querySelectorAll('td');
-                
-                switch(ordenarPor) {
-                    case 'reciente':
-                        return new Date(celdasB[2].textContent) - new Date(celdasA[2].textContent);
-                    case 'antiguo':
-                        return new Date(celdasA[2].textContent) - new Date(celdasB[2].textContent);
-                    case 'cantidad':
-                        return parseInt(celdasB[4].textContent) - parseInt(celdasA[4].textContent);
-                    case 'total':
-                        return parseFloat(celdasB[5].textContent.replace('$', '').replace(',', '')) - 
-                               parseFloat(celdasA[5].textContent.replace('$', '').replace(',', ''));
-                    default:
-                        return 0;
-                }
-            });
-            
-            // Limpiar
-            listaVentas.innerHTML = '';
-            filas.forEach(fila => listaVentas.appendChild(fila));
-        }
-    </script>
+    <!-- Script para ventas -->
+    <script src="js/ventas.js"></script>
 </body>
 </html>
