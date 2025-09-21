@@ -113,7 +113,37 @@
             </div>
         </div>
     </div>
-
+<!-- Sección de Reseñas -->
+    <div class="container my-5">
+        <h4 class="mb-3">Reseñas de clientes</h4>
+    
+        <!-- Formulario de reseña -->
+        <form id="reviewForm" class="mb-4" data-product="verdura1">
+            <div class="mb-2">
+                <label for="reviewName" class="form-label">Tu nombre</label>
+                <input type="text" id="reviewName" class="form-control" placeholder="Escribe tu nombre" required>
+            </div>
+            <div class="mb-2">
+                <label for="reviewRating" class="form-label">Calificación</label>
+                <select id="reviewRating" class="form-select" required>
+                    <option value="" disabled selected>Elige...</option>
+                    <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+                    <option value="4">⭐⭐⭐⭐ (4)</option>
+                    <option value="3">⭐⭐⭐ (3)</option>
+                    <option value="2">⭐⭐ (2)</option>
+                    <option value="1">⭐ (1)</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="reviewText" class="form-label">Comentario</label>
+                <textarea id="reviewText" class="form-control" rows="3" placeholder="Escribe tu reseña" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Enviar reseña</button>
+        </form>
+    
+        <!-- Lista de reseñas -->
+        <div id="reviewsList" class="list-group"></div>
+    </div>
     <!-- Productos relacionados -->
     <div class="container my-4">
         <hr>
@@ -226,6 +256,7 @@
     <script src="js/form_scripts.js"></script>
     <script src="js/detalleproducto.js"></script>
     <script src="js/carrito.js"></script>
+    <script src="js/reseñas.js"></script>
     <script>renderCarrito();</script>
 </body>
 </html>
