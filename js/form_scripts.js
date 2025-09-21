@@ -167,7 +167,7 @@ if (formRegistro) {
         if (correoValido && passValido) {
             alert("Usuario registrado, Bienvenido " + user);
             localStorage.setItem("loggedIn", "true");
-            localStorage.setItem("username", user);
+            localStorage.setItem("username", correoInput.value);
             guardarTipoUsuario(correoInput.value);
             if (correoInput.value.endsWith("@profesor.duoc.cl")) {
                 window.location.href = "admin.html";
